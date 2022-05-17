@@ -1,0 +1,33 @@
+<div class="row justify-content-center" th:if="${game}">
+    <form th:fragment="formG" class="col-8 g-3 needs-validation" th:object="${game}"
+        th:action="@{/{url}/new (url=${url})}" method="post">
+        <div class="row pb-5 rounded border border-secondary">
+            <div class="col-6 mt-3">
+                <label for="name" class="form-label">Name</label> <input class="form-control" th:field="*{name}"
+                    type="text" id="name" required />
+            </div>
+            <div class="col-6 mt-3">
+                <label for="img" class="form-label">Image</label> <input class="form-control" th:field="*{img}"
+                    type="text" id="img" required />
+            </div>
+            <div class="col-12 mt-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea th:field="*{description}" class="form-control" id="description" type="text"
+                    required></textarea>
+            </div>
+            <div class="col-12 mt-3">
+                <label for="distributors" class="form-label">Distributors</label> <select th:field="*{distributor}"
+                    class="form-select" id="distributor">
+                    <option value="">-- Distributor --</option>
+                    <option th:each="distributor: ${distributors}" th:text="${distributor.name}"
+                        th:value="${distributor.id}"></option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+        </div>
+    </form>
+</div>

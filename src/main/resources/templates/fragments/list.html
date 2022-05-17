@@ -1,0 +1,12 @@
+<div class="row mt-5" th:fragment="list">
+    <div class="col-3" th:each="element : ${elements}">
+        <div class="card mb-3">
+            <img th:if="${url == 'game'}" th:src="${element.img}" class="card-img-top" alt="alt" />
+            <div class="card-body">
+                <h5 class="card-title" th:text="${element.name}"></h5>
+                <p class="card-text" th:text="${element.toString()}"></p>
+                <button href="#" class="btn btn-primary">Go somewhere</button>
+            </div>
+        </div>
+    </div>
+</div>

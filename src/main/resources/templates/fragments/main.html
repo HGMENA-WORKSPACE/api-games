@@ -1,0 +1,7 @@
+<div class="mt-5 row justify-content-center" th:fragment="main">
+    <!-- -->
+    <div th:insert="fragments/list.html" :: list></div>
+    <!-- -->
+    <div th:if="${url == 'game'}" th:insert="fragments/formG.html" :: formG></div>
+    <div th:if="${url == 'distributor'}" th:insert="fragments/formD.html" :: formD></div>
+</div>

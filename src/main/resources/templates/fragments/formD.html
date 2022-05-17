@@ -1,0 +1,20 @@
+<div class="row justify-content-center" th:if="${distributor}">
+    <form th:fragment="formD" class="col-8 g-3 needs-validation" th:object="${distributor}"
+        th:action="@{/{url}/new (url=${url})}" method="post">
+        <div class="row pb-5 rounded border border-secondary">
+            <div class="col-6 mt-3">
+                <label for="name" class="form-label">Name</label> <input class="form-control" name="name"
+                    th:field="*{name}" type="text" id="name" required />
+            </div>
+            <div class="col-6 mt-3">
+                <label for="web" class="form-label">Web</label> <input class="form-control" name="web" th:field="*{web}"
+                    type="text" id="web" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 mt-5">
+                <button class="btn btn-primary" type="submit">Submit form</button>
+            </div>
+        </div>
+    </form>
+</div>
