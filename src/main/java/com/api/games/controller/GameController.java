@@ -28,6 +28,10 @@ public class GameController {
         return "index";
     }
 
+    /**
+     * @param model
+     * @return
+     */
     @GetMapping("/all")
     public String getAll(Model model) {
         model.addAttribute("elements", service.getAll());
@@ -53,7 +57,7 @@ public class GameController {
      */
     @GetMapping("/find")
     public String findByName(@RequestParam("q") String name, Model model) {
-        model.addAttribute("games", service.findByName(name));
+        model.addAttribute("elements", service.findByName(name));
         return "index";
     }
 

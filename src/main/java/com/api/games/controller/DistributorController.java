@@ -22,15 +22,13 @@ public class DistributorController {
         return "index";
     }
 
+    /**
+     * @param model
+     * @return
+     */
     @GetMapping("/all")
     public String index(Model model) {
         model.addAttribute("elements", service.getAll());
-        return "index";
-    }
-
-    @GetMapping("/{id}")
-    public String getById(@PathVariable int id, Model model) {
-        model.addAttribute("elements", service.getById(id));
         return "index";
     }
 
@@ -39,10 +37,20 @@ public class DistributorController {
      * @param model
      * @return
      */
+    @GetMapping("/{id}")
+    public String getById(@PathVariable int id, Model model) {
+        model.addAttribute("elements", service.getById(id));
+        return "index";
+    }
+
+    /**
+     * @param name
+     * @param model
+     * @return
+     */
     @GetMapping("/find")
-    public String getByDistributor(int id, Model model) {
-        model.addAttribute("url", "distributor");
-        model.addAttribute("games", service.getById(id));
+    public String getByDistributor(@RequestParam("q") String name, Model model) {
+        model.addAttribute("elements", service.findByName(name));
         return "index";
     }
 
@@ -52,7 +60,6 @@ public class DistributorController {
      */
     @GetMapping("/new")
     public String newDistributor(Distributor distributor, Model model) {
-        model.addAttribute("url", "distributor");
         model.addAttribute("distributor", distributor);
         return "index";
     }

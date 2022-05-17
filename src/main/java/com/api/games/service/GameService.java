@@ -11,34 +11,41 @@ import com.api.games.repository.IGameRepository;
 @Service
 public class GameService implements IGameService {
 
-	@Autowired
-	private IGameRepository gameRepository;
+    @Autowired
+    private IGameRepository gameRepository;
 
-	/**
-	 * 
-	 */
-	@Override
-	public List<Game> getAll() {
-		return (List<Game>) gameRepository.findAllGames();
-	}
+    /**
+     * @return
+     */
+    @Override
+    public List<Game> getAll() {
+        return (List<Game>) gameRepository.findAllGames();
+    }
 
-	/**
-	 * 
-	 */
-	@Override
-	public Game getById(int id) {
-		return (Game) gameRepository.findById(id).orElse(null);
-	}
+    /**
+     * @param id
+     * @return
+     */
+    @Override
+    public Game getById(int id) {
+        return (Game) gameRepository.findById(id).orElse(null);
+    }
 
+    /**
+     * @param game
+     */
+    @Override
+    public void save(Game game) {
+        this.gameRepository.save(game);
+    }
 
-	@Override
-	public void save(Game game) {
-		this.gameRepository.save(game);
-	}
-
-	@Override
-	public List<Game> findByName(String name) {
-		return (List<Game>) gameRepository.findByNameContaining(name);
-	}
+    /**
+     * @param name
+     * @return
+     */
+    @Override
+    public List<Game> findByName(String name) {
+        return (List<Game>) gameRepository.findByNameContaining(name);
+    }
 
 }
